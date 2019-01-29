@@ -23,4 +23,4 @@ The script "v22TestConnectivity.sh" check periodically if the network share is s
 The script will run as follow:
 Test if the share is mounted. If yes, exit. If no, stop manager and server and try to mount the share. If able to mount share, start manager and server and send email about the incident and exit. IF not able, send email en exit.
 
-To run the scripts I have to plist files that I add to /Library/LaunchDeamons folder.
+To run the scripts I have two plist files that I add to /Library/LaunchDeamons folder.
