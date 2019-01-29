@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.v22TestConnectivity</string>
+
+  <key>ProgramArguments</key>
+  <array>
+	<string>/Path/to/script.sh</string>
+  </array>
+
+  <key>AbandonProcessGroup</key>
+  <true/>
+
+  <key>Nice</key>
+  <integer>1</integer>
+
+  <key>StartCalendarInterval</key>
+  <array>
+  <dict>
+	  <key>Hour</key>
+	  <integer>06</integer>
+	  <key>Minute</key>
+	  <integer>01</integer>
+  </dict>
+  <dict>
+	  <key>Hour</key>
+	  <integer>07</integer>
+	  <key>Minute</key>
+	  <integer>01</integer>
+  </dict>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/Path/to/directory/</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/Path/to/ConnectivityErr.log</string>
+
+  <key>StandardOutPath</key>
+  <string>/Users/Path/to/ConnectivityOut.log</string>
+</dict>
+</plist>
