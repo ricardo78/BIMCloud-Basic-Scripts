@@ -53,7 +53,7 @@ mkdir -pv "${localBkUp}/Server"
 
 # Checking if the subfolders cannot be created
 if [[ ! -dw "${localBkUp}/Manager" ]] || [[ ! -dw "${localBkUp}/Server" ]] ; then
-  echo "The subfolders in ${localBkUp} cannot be created or the folders are not writable at "$(date -u)""
+  echo "The subfolders in ${localBkUp} cannot be created or the folders are not writable at "$(date -u)"" ; mail -s "Subfolders cannot be created for share \"${ShareName}\"" "${email}" < "${BkUpLog}"
   exit 1
 fi
 
