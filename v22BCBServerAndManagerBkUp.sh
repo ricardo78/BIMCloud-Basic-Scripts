@@ -26,7 +26,7 @@ touch "${BkUpLog}"
 
 # Then check if the network share is mounted.
 if mount | grep -q "${MountPoint01}"; then
-  echo "The share \"${ShareName}\" is at "$(date -u)" mounted" 2>&1 | tee -a "${BkUpLog}"
+  echo "The share \"${ShareName}\" is at "$(date)" mounted" 2>&1 | tee -a "${BkUpLog}"
 else
   launchctl unload "${ServerDaemon}"
   launchctl unload "${ManagerDaemon}"
