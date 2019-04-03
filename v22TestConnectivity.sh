@@ -44,10 +44,10 @@ else
         done
     else
         # If share was not mounted, send logfile by email and exit. Need to take action
-        echo "I'm at "$(date -u)" unable to mount share \"${ShareName}\". You need to take action." 2>&1 | tee -a "${ConnectivityLog}" ; mail -s "Unable to mount Share \"${ShareName}\"" "${email}" < "${ConnectivityLog}"
+        echo "I'm at "$(date)" unable to mount share \"${ShareName}\". You need to take action." 2>&1 | tee -a "${ConnectivityLog}" ; mail -s "Unable to mount Share \"${ShareName}\"" "${email}" < "${ConnectivityLog}"
         exit 1
     fi
     # If share & processes are running, send email about the insident.
-    echo "Share \"${ShareName}\" went offline around "$(date -u)". Everything seems to be ok now, but you should investigate." 2>&1 | tee -a "${ConnectivityLog}" ; mail -s "Share \"${ShareName}\" is back on line" "${email}" < "${ConnectivityLog}"
+    echo "Share \"${ShareName}\" went offline around "$(date)". Everything seems to be ok now, but you should investigate." 2>&1 | tee -a "${ConnectivityLog}" ; mail -s "Share \"${ShareName}\" is back on line" "${email}" < "${ConnectivityLog}"
 fi
 # end sctipt

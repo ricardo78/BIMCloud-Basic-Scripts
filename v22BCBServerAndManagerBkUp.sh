@@ -30,16 +30,16 @@ if mount | grep -q "${MountPoint01}"; then
 else
   launchctl unload "${ServerDaemon}"
   launchctl unload "${ManagerDaemon}"
-  echo "The share \"${ShareName}\" is at "$(date -u)" NOT mounted. I have shut down BIMCloud Basic. You need to take action!" 2>&1 | tee -a "${BkUpLog}" ; mail -s "BIMCloud BAsic is shut down" "${email}" < "${BkUpLog}"
+  echo "The share \"${ShareName}\" is at "$(date)" NOT mounted. I have shut down BIMCloud Basic. You need to take action!" 2>&1 | tee -a "${BkUpLog}" ; mail -s "BIMCloud BAsic is shut down" "${email}" < "${BkUpLog}"
   exit 1
 fi
 
 # Checking if manager or server directory or the backup folder does not exist
 if [[ ! -d ${ManagerDir} ]] || [[ ! -d ${ServerDir} ]] ; then
-  echo "The manager or server directory does not exist at "$(date -u)"" 2>&1 | tee -a "${BkUpLog}" ; mail -s "The manager or server directory of \"${ShareName}\" is missing" "${email}" < "${BkUpLog}"
+  echo "The manager or server directory does not exist at "$(date)"" 2>&1 | tee -a "${BkUpLog}" ; mail -s "The manager or server directory of \"${ShareName}\" is missing" "${email}" < "${BkUpLog}"
   exit 1
 elif [[ ! -dw ${localBkUp} ]] ; then
-  echo "${localBkUp}"" folder does not exist or the folder is not writable at "$(date -u)"" 2>&1 | tee -a "${BkUpLog}" ; mail -s "The Backupfolder of \"${ShareName}\" is missing" "${email}" < "${BkUpLog}"
+  echo "${localBkUp}"" folder does not exist or the folder is not writable at "$(date)"" 2>&1 | tee -a "${BkUpLog}" ; mail -s "The Backupfolder of \"${ShareName}\" is missing" "${email}" < "${BkUpLog}"
   exit 1
 fi
 
@@ -53,7 +53,7 @@ mkdir -pv "${localBkUp}/Server"
 
 # Checking if the subfolders cannot be created
 if [[ ! -dw "${localBkUp}/Manager" ]] || [[ ! -dw "${localBkUp}/Server" ]] ; then
-  echo "The subfolders in ${localBkUp} cannot be created or the folders are not writable at "$(date -u)"" ; mail -s "Subfolders cannot be created for share \"${ShareName}\"" "${email}" < "${BkUpLog}"
+  echo "The subfolders in ${localBkUp} cannot be created or the folders are not writable at "$(date)"" ; mail -s "Subfolders cannot be created for share \"${ShareName}\"" "${email}" < "${BkUpLog}"
   exit 1
 fi
 
