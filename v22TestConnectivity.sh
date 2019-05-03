@@ -17,7 +17,7 @@ touch "${ConnectivityLog}"
 # Check if disks are mounted.
 if mount | grep -q "${MountPoint01}"; then
   echo "Share \"${ShareName}\" it still mounted at "$(date)", No furhter action needed." 2>&1 | tee -a "${ConnectivityLog}" ; mail -s "The share \"${ShareName}\" is still mounted" "${email}" < "${ConnectivityLog}"
-  exit 1
+  exit 0
 else
     # If share is not mounted, stop BIM-server and BIM-manager
     launchctl unload "${ServerDaemon}"
