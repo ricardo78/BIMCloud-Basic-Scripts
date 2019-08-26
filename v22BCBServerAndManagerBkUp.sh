@@ -46,13 +46,15 @@ fi
 # Cleaning the backup folder
 rm -rf "${localBkUp}/Manager"
 rm -rf "${localBkUp}/Server"
+rm -rf "${SingleRestoreProjectBackup}"
 
 # Creating folders for the Backup
 mkdir -pv "${localBkUp}/Manager"
 mkdir -pv "${localBkUp}/Server"
+mkdir -pv "${SingleRestoreProjectBackup}"
 
 # Checking if the subfolders cannot be created
-if [[ ! -dw "${localBkUp}/Manager" ]] || [[ ! -dw "${localBkUp}/Server" ]] ; then
+if [[ ! -dw "${localBkUp}/Manager" ]] || [[ ! -dw "${localBkUp}/Server" ]] || [[ ! -dw "${SingleRestoreProjectBackup}" ]] ; then
   echo "The subfolders in ${localBkUp} cannot be created or the folders are not writable at "$(date)"" ; mail -s "Subfolders cannot be created for share \"${ShareName}\"" "${email}" < "${BkUpLog}"
   exit 1
 fi
