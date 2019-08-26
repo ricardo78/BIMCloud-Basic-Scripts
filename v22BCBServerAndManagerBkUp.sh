@@ -74,7 +74,7 @@ cp -R "${ServerDir}/Mailboxes" "${localBkUp}/Server"
 cp -R "${ProjectDir}" "${localBkUp}/Server"
 cp -R "${ServerDir}/Sessions" "${localBkUp}/Server"
 
-# Start the BackupTool and create project resotre files. Will create BIMProject and BIMLibrary files
+# Start the BackupTool and create project restore files. Will create BIMProject and BIMLibrary files
 "${ServerDir}/TeamworkServerBackupTool" "${SingleRestoreProjectBackup}" 2>&1 | tee -a "${BkUpLog}"
 
 # Restarting Server service
