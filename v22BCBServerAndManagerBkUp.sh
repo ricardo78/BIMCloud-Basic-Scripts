@@ -34,7 +34,7 @@ else
   exit 1
 fi
 
-# Checking if manager or server directory or the backup folder does not exist
+# Checking if manager or server directory or the backup folder exists
 if [[ ! -d ${ManagerDir} ]] || [[ ! -d ${ServerDir} ]] ; then
   echo "The manager or server directory does not exist at "$(date)"" 2>&1 | tee -a "${BkUpLog}" ; mail -s "The manager or server directory of \"${ShareName}\" is missing" "${email}" < "${BkUpLog}"
   exit 1
@@ -43,7 +43,7 @@ elif [[ ! -dw ${localBkUp} ]] ; then
   exit 1
 fi
 
-# Cleaning the backup folder
+# Deleting the backup folder
 rm -rf "${localBkUp}/Manager"
 rm -rf "${localBkUp}/Server"
 rm -rf "${SingleRestoreProjectBackup}"
@@ -53,7 +53,7 @@ mkdir -pv "${localBkUp}/Manager"
 mkdir -pv "${localBkUp}/Server"
 mkdir -pv "${SingleRestoreProjectBackup}"
 
-# Checking if the subfolders cannot be created
+# Checking if the subfolders can be created
 if [[ ! -dw "${localBkUp}/Manager" ]] || [[ ! -dw "${localBkUp}/Server" ]] || [[ ! -dw "${SingleRestoreProjectBackup}" ]] ; then
   echo "The subfolders in ${localBkUp} cannot be created or the folders are not writable at "$(date)"" ; mail -s "Subfolders cannot be created for share \"${ShareName}\"" "${email}" < "${BkUpLog}"
   exit 1
